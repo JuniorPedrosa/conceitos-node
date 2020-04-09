@@ -56,16 +56,19 @@ app.put("/repositories/:id", (request, response) => {
     return response.status(400).json({error: 'Id not found'})
   };
 
+  const likes = repositories[repositoryIndex].likes;
+
   const list = {
     id,
     title,
     url,
     techs,
+    likes,
   };
 
-  repositories[listIndex] = list;
+  repositories[repositoryIndex] = list;
 
-  return response.json(list)
+  return response.json(list);
 });
 
 app.delete("/repositories/:id", (request, response) => {
